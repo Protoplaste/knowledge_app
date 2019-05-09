@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DatabaseAssociations::HasOneTest< ActiveSupport::TestCase
+class DatabaseAssociations::HasOneThroughTest< ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
