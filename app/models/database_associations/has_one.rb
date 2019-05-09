@@ -4,7 +4,7 @@ module DatabaseAssociations::HasOne
   end
 
   class Foo < ApplicationRecord
-    belongs_to :bar
+    belongs_to :bar #foreign_key: :bar_id
   end
 
   class Bar < ApplicationRecord

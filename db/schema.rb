@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_09_100912) do
+ActiveRecord::Schema.define(version: 2019_05_09_103409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,23 @@ ActiveRecord::Schema.define(version: 2019_05_09_100912) do
 
   create_table "database_associations_has_one_foos", force: :cascade do |t|
     t.integer "bar_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "database_associations_has_one_through_bars", force: :cascade do |t|
+    t.integer "foobar_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "database_associations_has_one_through_foo_bars", force: :cascade do |t|
+    t.integer "foo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "database_associations_has_one_through_foos", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

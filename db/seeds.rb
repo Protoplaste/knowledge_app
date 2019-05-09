@@ -6,5 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+#example of has_one association
 bar = DatabaseAssociations::HasOne::Bar.create
 DatabaseAssociations::HasOne::Foo.create(bar_id: bar.id)
+
+#example of has_one through association
+foo = DatabaseAssociations::HasOneThrough::Foo.create
+foobar = DatabaseAssociations::HasOneThrough::FooBar.create(foo_id: foo.id)
+DatabaseAssociations::HasOneThrough::Bar.create(foobar_id: foobar.id)
