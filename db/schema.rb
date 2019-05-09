@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_09_114043) do
+ActiveRecord::Schema.define(version: 2019_05_09_124437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,23 @@ ActiveRecord::Schema.define(version: 2019_05_09_114043) do
   end
 
   create_table "database_associations_has_one_through_foos", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "database_associations_polymorphic_association_bar1s", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "database_associations_polymorphic_association_bar2s", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "database_associations_polymorphic_association_foos", force: :cascade do |t|
+    t.integer "bar_id"
+    t.string "bar_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

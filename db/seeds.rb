@@ -54,3 +54,11 @@ end
   end
   DatabaseAssociations::HasAndBelongsToMany::Foo.create(bars: bars)
 end
+
+#example of a polymorphic association
+bar1 = DatabaseAssociations::PolymorphicAssociation::Bar1.create
+bar2 = DatabaseAssociations::PolymorphicAssociation::Bar2.create
+(1..5).each do
+  DatabaseAssociations::PolymorphicAssociation::Foo.create(bar_type: bar1)
+  DatabaseAssociations::PolymorphicAssociation::Foo.create(bar_type: bar2)
+end
