@@ -17,7 +17,21 @@ DatabaseAssociations::HasOneThrough::Bar.create(foobar_id: foobar.id)
 
 #example of has_many association
 bar = DatabaseAssociations::HasMany::Bar.create
-DatabaseAssociations::HasMany::Foo.create(bar_id: bar.id)
-DatabaseAssociations::HasMany::Foo.create(bar_id: bar.id)
-DatabaseAssociations::HasMany::Foo.create(bar_id: bar.id)
-DatabaseAssociations::HasMany::Foo.create(bar_id: bar.id)
+for i in 1..5
+  DatabaseAssociations::HasMany::Foo.create(bar_id: bar.id)
+end
+
+#example of has_many through many-to-many association
+foos = 
+for i in 1..5
+   DatabaseAssociations::HasManyThrough::Foo.create(id: i)
+end
+
+bars = 
+for i in 1..5
+   DatabaseAssociations::HasManyThrough::Bar.create(id: i)
+end
+
+for i in 1..5
+   DatabaseAssociations::HasManyThrough::FooBar.create(foo_id: i, bar_id: i)
+end
