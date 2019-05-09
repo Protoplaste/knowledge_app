@@ -10,32 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_09_103409) do
+ActiveRecord::Schema.define(version: 2019_05_09_105634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "database_associations_has_one_bars", force: :cascade do |t|
+  create_table "database_associations_has_many_bars", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "database_associations_has_many_foos", force: :cascade do |t|
+    t.integer "bar_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bar_id"], name: "index_database_associations_has_many_foos_on_bar_id"
+  end
+
+  create_table "database_associations_has_one_bars", force: :cascade do |t|
+    t.integer "foobar_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["foobar_id"], name: "index_database_associations_has_one_bars_on_foobar_id"
   end
 
   create_table "database_associations_has_one_foos", force: :cascade do |t|
     t.integer "bar_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["bar_id"], name: "index_database_associations_has_one_foos_on_bar_id"
   end
 
   create_table "database_associations_has_one_through_bars", force: :cascade do |t|
     t.integer "foobar_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["foobar_id"], name: "index_database_associations_has_one_through_bars_on_foobar_id"
   end
 
   create_table "database_associations_has_one_through_foo_bars", force: :cascade do |t|
     t.integer "foo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["foo_id"], name: "index_database_associations_has_one_through_foo_bars_on_foo_id"
   end
 
   create_table "database_associations_has_one_through_foos", force: :cascade do |t|

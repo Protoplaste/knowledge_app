@@ -14,3 +14,10 @@ DatabaseAssociations::HasOne::Foo.create(bar_id: bar.id)
 foo = DatabaseAssociations::HasOneThrough::Foo.create
 foobar = DatabaseAssociations::HasOneThrough::FooBar.create(foo_id: foo.id)
 DatabaseAssociations::HasOneThrough::Bar.create(foobar_id: foobar.id)
+
+#example of has_many association
+bar = DatabaseAssociations::HasMany::Bar.create
+DatabaseAssociations::HasMany::Foo.create(bar_id: bar.id)
+DatabaseAssociations::HasMany::Foo.create(bar_id: bar.id)
+DatabaseAssociations::HasMany::Foo.create(bar_id: bar.id)
+DatabaseAssociations::HasMany::Foo.create(bar_id: bar.id)
