@@ -14,8 +14,6 @@ module DatabaseAssociations::HasOneThrough
   end
 
   class Bar < ApplicationRecord
-    #TODO - understand why class_name needed to be specified here
-    #default pointed at Bar::FooBar instead of FooBar
     belongs_to :foobar, class_name: 'FooBar' #foreign_key: :foobar_id
   end
 end

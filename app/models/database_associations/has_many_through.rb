@@ -3,23 +3,19 @@ module DatabaseAssociations::HasManyThrough
     'database_associations_has_many_through_'
   end
 
-  class DatabaseAssociations::HasManyThrough::Foo < ApplicationRecord
-    has_many :foobars
+  class Foo < ApplicationRecord
+    has_many :foobars, class_name: 'FooBar'
     has_many :bars, through: :foobars
   end
 
-  class DatabaseAssociations::HasManyThrough::FooBar < ApplicationRecord
+  class FooBar < ApplicationRecord
     #each foobar is representing one connection between foo and bar
     belongs_to :foo # foreign_key: :foo_id
     belongs_to :bar # foreign_key: :bar_id
   end
 
-
-  class DatabaseAssociations::HasManyThrough::Bar < ApplicationRecord
-    has_many :foobars
+  class Bar < ApplicationRecord
+    has_many :foobars, class_name: 'FooBar'
     has_many :foos, through: :foobars
   end
-
-
-
 end

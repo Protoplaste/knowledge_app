@@ -10,6 +10,4 @@ module DatabaseAssociations::HasMany
   class DatabaseAssociations::HasMany::Bar < ApplicationRecord
     has_many :foos #pluralised
   end
-
-
 end

@@ -17,21 +17,40 @@ DatabaseAssociations::HasOneThrough::Bar.create(foobar_id: foobar.id)
 
 #example of has_many association
 bar = DatabaseAssociations::HasMany::Bar.create
-for i in 1..5
+(1..5).each do
   DatabaseAssociations::HasMany::Foo.create(bar_id: bar.id)
 end
 
 #example of has_many through many-to-many association
-foos = 
-for i in 1..5
-   DatabaseAssociations::HasManyThrough::Foo.create(id: i)
+(1..5).each do
+  #create bar with 5 foos
+  foos = []
+  (1..5).each do
+    foos << DatabaseAssociations::HasManyThrough::Foo.create
+  end
+  DatabaseAssociations::HasManyThrough::Bar.create(foos: foos)
+
+  #create foo with 5 bars
+  bars = []
+  (1..5).each do
+    bars << DatabaseAssociations::HasManyThrough::Bar.create
+  end
+  DatabaseAssociations::HasManyThrough::Foo.create(bars: bars)
 end
 
-bars = 
-for i in 1..5
-   DatabaseAssociations::HasManyThrough::Bar.create(id: i)
-end
+#example of has_and_belongs_to_many association
+(1..5).each do
+  #create bar with 5 foos
+  foos = []
+  (1..5).each do
+    foos << DatabaseAssociations::HasAndBelongsToMany::Foo.create
+  end
+  DatabaseAssociations::HasAndBelongsToMany::Bar.create(foos: foos)
 
-for i in 1..5
-   DatabaseAssociations::HasManyThrough::FooBar.create(foo_id: i, bar_id: i)
+  #create foo with 5 bars
+  bars = []
+  (1..5).each do
+    bars << DatabaseAssociations::HasAndBelongsToMany::Bar.create
+  end
+  DatabaseAssociations::HasAndBelongsToMany::Foo.create(bars: bars)
 end

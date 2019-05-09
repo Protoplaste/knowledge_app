@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_09_112245) do
+ActiveRecord::Schema.define(version: 2019_05_09_114043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "database_associations_has_and_belongs_to_many_bars", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "database_associations_has_and_belongs_to_many_foo_bars", force: :cascade do |t|
+    t.integer "foo_id"
+    t.integer "bar_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "database_associations_has_and_belongs_to_many_foos", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "database_associations_has_many_bars", force: :cascade do |t|
     t.datetime "created_at", null: false

@@ -10,5 +10,4 @@ module DatabaseAssociations::HasOne
   class Bar < ApplicationRecord
     has_one :foo
   end
-
 end
